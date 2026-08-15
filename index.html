@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> FIT AND FLEX GYM | Janakpur</title>
+<meta name="description" content="Premium fitness center in Janakpur. Strength training, fat loss coaching, CrossFit, personal training and more. Get your free 3-day pass today.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>document.documentElement.classList.add('js-ready');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/[email protected]/dist/umd/lucide.min.js" defer></script>
+
+<style>
+  :root{
+    --ink:#09090B;
+    --charcoal:#18181B;
+    --slate:#27272A;
+    --slate-light:#3f3f46;
+    --gold:#FACC15;
+    --gold-deep:#EAB308;
+    --ember:#F97316;
+    --white:#FFFFFF;
+    --muted:#A1A1AA;
+  }
+  *{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--white);
+    font-family:'Manrope',sans-serif;
+    overflow-x:hidden;
+  }
+  .font-display{font-family:'Bebas Neue',sans-serif; letter-spacing:0.02em;}
+  .font-mono{font-family:'JetBrains Mono',monospace;}
+
+  .text-gold{color:var(--gold);}
+  .bg-gold{background-color:var(--gold);}
+  .border-gold{border-color:var(--gold);}
+
+  .gold-gradient-text{
+    background:linear-gradient(100deg, var(--gold) 0%, var(--ember) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  /* Dragon-scale texture — repeating half-moon pattern, the signature motif */
+  .scale-texture{
+    background-image: radial-gradient(circle at 50% 100%, transparent 60%, rgba(250,204,21,0.05) 61%, rgba(250,204,21,0.05) 63%, transparent 64%);
+    background-size: 44px 26px;
+  }
+  .scale-texture-dense{
+    background-image: radial-gradient(circle at 50% 100%, transparent 55%, rgba(250,204,21,0.07) 56%, rgba(250,204,21,0.07) 59%, transparent 60%);
+    background-size: 28px 18px;
+  }
+
+  .glass{
+    background: rgba(24,24,27,0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .glow-gold{
+    box-shadow: 0 0 0 1px rgba(250,204,21,0.25), 0 8px 40px -8px rgba(250,204,21,0.35);
+  }
+  .btn-glow:hover{
+    box-shadow: 0 0 30px 4px rgba(250,204,21,0.55);
+  }
+
+  .ember-underline{
+    position:relative;
+  }
+  .ember-underline::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:-10px;
+    height:3px; width:64px;
+    background:linear-gradient(90deg,var(--gold),var(--ember));
+    border-radius:2px;
+  }
+
+  /* Flame-trail divider — the signature transition element */
+  .flame-divider{
+    height:2px;
+    background:linear-gradient(90deg, transparent, var(--gold-deep) 20%, var(--ember) 50%, var(--gold-deep) 80%, transparent);
+    position:relative;
+    opacity:0.6;
+  }
+
+  .reveal{
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  html.js-ready .reveal{
+    opacity:0;
+    transform:translateY(28px);
+  }
+  html.js-ready .reveal.in{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  ::-webkit-scrollbar{width:10px;}
+  ::-webkit-scrollbar-track{background:var(--ink);}
+  ::-webkit-scrollbar-thumb{background:var(--slate-light); border-radius:8px;}
+
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+    .reveal{opacity:1; transform:none;}
+  }
+
+  .card-hover{transition:transform 0.35s ease, border-color 0.35s ease;}
+  .card-hover:hover{transform:translateY(-6px); border-color:rgba(250,204,21,0.4);}
+
+  .marquee-track{
+    display:flex;
+    width:max-content;
+    animation:marquee 26s linear infinite;
+  }
+  @keyframes marquee{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  .price-card{transition:transform .35s ease, box-shadow .35s ease;}
+  .price-card:hover{transform:translateY(-8px);}
+
+  .nav-link{position:relative;}
+  .nav-link::after{
+    content:"";
+    position:absolute; left:0; bottom:-4px;
+    width:0%; height:2px;
+    background:var(--gold);
+    transition:width .25s ease;
+  }
+  .nav-link:hover::after{width:100%;}
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- ================= NAVIGATION ================= -->
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <nav class="glass mx-auto mt-0 md:mt-3 md:max-w-6xl md:rounded-2xl px-5 md:px-6 py-3.5 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5 group shrink-0">
+      <img src="fit and flex logo.jpg" alt="FIT AND FLEX logo" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover shrink-0">
+      <span class="font-display text-lg sm:text-xl md:text-2xl tracking-wide leading-none whitespace-nowrap">FIT AND<span class="text-gold"> FLEX GYM </span></span>
+    </a>
+
+    <div class="hidden lg:flex items-center gap-8 font-mono text-xs uppercase tracking-widest text-zinc-300">
+      <a href="#about" class="nav-link hover:text-white transition">About</a>
+      <a href="#services" class="nav-link hover:text-white transition">Services</a>
+      <a href="#pricing" class="nav-link hover:text-white transition">Pricing</a>
+      <a href="#trainers" class="nav-link hover:text-white transition">Trainers</a>
+      <a href="#transformations" class="nav-link hover:text-white transition">Results</a>
+      <a href="#location" class="nav-link hover:text-white transition">Location</a>
+    </div>
+
+    <a href="https://wa.me/9779814684061?text=Hi%20fit%20and%20Flex%20gym%2C%20I%27d%20like%20to%20claim%20my%20free%203-day%20pass!" target="_blank" rel="noopener noreferrer"
+       class="hidden md:inline-flex items-center gap-2 bg-gold text-black font-bold text-sm px-5 py-2.5 rounded-full btn-glow transition-all duration-300 hover:brightness-105">
+      <i data-lucide="flame" class="w-4 h-4"></i> Book Free Pass
+    </a>
+
+    <button id="menuBtn" class="lg:hidden text-white" aria-label="Open menu" aria-expanded="false">
+      <i data-lucide="menu" class="w-7 h-7"></i>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden lg:hidden glass mx-3 mt-2 rounded-2xl px-6 py-6 flex flex-col gap-5 font-mono text-sm uppercase tracking-widest">
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#pricing" class="mobile-link">Pricing</a>
+    <a href="#trainers" class="mobile-link">Trainers</a>
+    <a href="#transformations" class="mobile-link">Results</a>
+    <a href="#location" class="mobile-link">Location</a>
+    <a href="https://wa.me/9779814684061?text=Hi%20FIT520and%20Flex%20gym%2C%20I%27d%20like%20to%20claim%20my%20free%203-day%20pass!" target="_blank" rel="noopener noreferrer"
+       class="inline-flex items-center justify-center gap-2 bg-gold text-black font-bold px-5 py-3 rounded-full mt-2">
+      <i data-lucide="flame" class="w-4 h-4"></i> Book Free Pass
+    </a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="top" class="relative min-h-screen flex items-center pt-28 pb-16 scale-texture">
+  <div class="absolute inset-0 -z-10">
+    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=70" alt="" class="w-full h-full object-cover opacity-25">
+    <div class="absolute inset-0 bg-gradient-to-t from-[#09090B] via-[#09090B]/85 to-[#09090B]/70"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#09090B] via-transparent to-[#09090B]/40"></div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-5 md:px-6 w-full grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+    <div class="reveal">
+      <div class="inline-flex items-center gap-2 border border-gold/40 rounded-full px-4 py-1.5 mb-6 font-mono text-xs tracking-widest text-gold uppercase">
+        <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Janakpur's Premium Fitness Floor
+      </div>
+
+      <h1 class="font-display text-5xl sm:text-7xl md:text-8xl leading-[0.92] mb-6">
+        A NEW ART<br>
+        OF <span class="gold-gradient-text">FITNESS</span><br>
+        IN YOUR TOWN
+      </h1>
+
+      <p class="text-zinc-300 text-base md:text-lg max-w-xl mb-9 leading-relaxed">
+        Specialized muscle mass gain and fat loss training with certified fitness and personal trainers, modern machines, and cardiovascular equipment.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 mb-10">
+        <a href="https://wa.me/9779814684061?text=Hi%20Fit%and%20Flex%20gym%2C%20I%27d%20like%20to%20claim%20my%20free%203-day%20pass!" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center justify-center gap-2 bg-gold text-black font-bold px-8 py-4 rounded-full glow-gold btn-glow transition-all duration-300 text-sm uppercase tracking-wide">
+          <i data-lucide="flame" class="w-4.5 h-4.5"></i> Get Free 3-Day Pass
+        </a>
+        <a href="#pricing"
+           class="inline-flex items-center justify-center gap-2 border border-zinc-600 hover:border-gold text-white font-bold px-8 py-4 rounded-full transition-all duration-300 text-sm uppercase tracking-wide">
+          Explore Plans <i data-lucide="arrow-down" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <div class="flex -space-x-3">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=100&q=60" class="w-9 h-9 rounded-full border-2 border-[#09090B] object-cover" alt="">
+          <img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fit=crop&w=100&q=60" class="w-9 h-9 rounded-full border-2 border-[#09090B] object-cover" alt="">
+          <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=100&q=60" class="w-9 h-9 rounded-full border-2 border-[#09090B] object-cover" alt="">
+        </div>
+        <div class="text-sm">
+          <div class="flex items-center gap-1 text-gold">
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <span class="text-white font-bold ml-1">4.9</span>
+          </div>
+          <p class="text-zinc-400 font-mono text-xs">on Google Reviews · 150+ members</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative reveal hidden lg:block">
+      <div class="relative rounded-3xl overflow-hidden glow-gold">
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=75" alt="Athlete training at Dragon Fitness Center" class="w-full h-[560px] object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+      </div>
+      <div class="absolute -bottom-6 -left-6 glass rounded-2xl px-5 py-4 flex items-center gap-3">
+        <div class="w-11 h-11 rounded-full bg-gold/15 flex items-center justify-center">
+          <i data-lucide="trending-up" class="w-5 h-5 text-gold"></i>
+        </div>
+        <div class="text-sm leading-tight">
+          <p class="font-bold text-white">Open 5 AM – 9 PM</p>
+          <p class="text-zinc-400 font-mono text-xs">Sunday – Friday</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#about" class="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-zinc-500 hover:text-gold transition">
+    <span class="font-mono text-[10px] uppercase tracking-widest">Scroll</span>
+    <i data-lucide="chevron-down" class="w-4 h-4 animate-bounce"></i>
+  </a>
+</section>
+
+<div class="flame-divider"></div>
+
+<!-- ================= ABOUT / WHY CHOOSE US ================= -->
+<section id="about" class="py-24 md:py-32 bg-[#09090B]">
+  <div class="max-w-6xl mx-auto px-5 md:px-6">
+    <div class="max-w-2xl mb-16 reveal">
+      <span class="font-mono text-xs uppercase tracking-[0.25em] text-gold">Why Choose Us</span>
+      <h2 class="font-display text-5xl md:text-6xl mt-3 ember-underline pb-3">Built For Real Results</h2>
+      <p class="text-zinc-400 mt-6 leading-relaxed">Every rack, coach, and class at Dragon Fitness exists for one purpose — getting you stronger, leaner, and more confident, faster than you thought possible.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="reveal glass rounded-2xl overflow-hidden card-hover">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=500&q=75" alt="Certified personal trainer coaching a client" class="w-full h-40 object-cover">
+        <div class="p-6">
+          <div class="w-11 h-11 rounded-xl bg-gold/15 flex items-center justify-center mb-4 -mt-11 relative border-4 border-charcoal bg-charcoal">
+            <i data-lucide="badge-check" class="w-5 h-5 text-gold"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Certified Trainers</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed">Every coach on the floor is certified and trained to correct your form, not just count your reps.</p>
+        </div>
+      </div>
+      <div class="reveal glass rounded-2xl overflow-hidden card-hover">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=500&q=75" alt="Modern gym machines and cardio equipment" class="w-full h-40 object-cover">
+        <div class="p-6">
+          <div class="w-11 h-11 rounded-xl bg-gold/15 flex items-center justify-center mb-4 -mt-11 relative border-4 border-charcoal bg-charcoal">
+            <i data-lucide="dumbbell" class="w-5 h-5 text-gold"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Modern Equipment</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed">A full line of modern machines and cardio equipment, maintained and upgraded regularly.</p>
+        </div>
+      </div>
+      <div class="reveal glass rounded-2xl overflow-hidden card-hover">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=500&q=75" alt="Healthy meal prep and nutrition planning" class="w-full h-40 object-cover">
+        <div class="p-6">
+          <div class="w-11 h-11 rounded-xl bg-gold/15 flex items-center justify-center mb-4 -mt-11 relative border-4 border-charcoal bg-charcoal">
+            <i data-lucide="salad" class="w-5 h-5 text-gold"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Diet & Nutrition Plans</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed">Custom nutrition planning built around your goal — mass gain, fat loss, or maintenance.</p>
+        </div>
+      </div>
+      <div class="reveal glass rounded-2xl overflow-hidden card-hover">
+        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=500&q=75" alt="Clean air-conditioned gym floor" class="w-full h-40 object-cover">
+        <div class="p-6">
+          <div class="w-11 h-11 rounded-xl bg-gold/15 flex items-center justify-center mb-4 -mt-11 relative border-4 border-charcoal bg-charcoal">
+            <i data-lucide="wind" class="w-5 h-5 text-gold"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">AC & Hygienic Floor</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed">A clean, air-conditioned training environment, sanitized daily, built for comfort under load.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services" class="py-24 md:py-32 bg-[#0d0d10] scale-texture-dense">
+  <div class="max-w-6xl mx-auto px-5 md:px-6">
+    <div class="max-w-2xl mb-16 reveal">
+      <span class="font-mono text-xs uppercase tracking-[0.25em] text-gold">Services & Facilities</span>
+      <h2 class="font-display text-5xl md:text-6xl mt-3 ember-underline pb-3">Every Path To Strength</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="reveal group relative rounded-2xl overflow-hidden h-72 card-hover">
+        <img src="https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?auto=format&fit=crop&w=700&q=75" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Strength training">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+        <div class="absolute bottom-0 p-6">
+          <i data-lucide="dumbbell" class="w-6 h-6 text-gold mb-2"></i>
+          <h3 class="font-bold text-lg">Strength Training & Bodybuilding</h3>
+        </div>
+      </div>
+
+      <div class="reveal group relative rounded-2xl overflow-hidden h-72 card-hover">
+        <img src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&w=700&q=75" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Cardio zone">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+        <div class="absolute bottom-0 p-6">
+          <i data-lucide="heart-pulse" class="w-6 h-6 text-gold mb-2"></i>
+          <h3 class="font-bold text-lg">Cardio & Weight Loss Zone</h3>
+        </div>
+      </div>
+
+      <div class="reveal group relative rounded-2xl overflow-hidden h-72 card-hover">
+        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=700&q=75" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Functional training">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+        <div class="absolute bottom-0 p-6">
+          <i data-lucide="zap" class="w-6 h-6 text-gold mb-2"></i>
+          <h3 class="font-bold text-lg">CrossFit & Functional Training</h3>
+        </div>
+      </div>
+
+      <div class="reveal group relative rounded-2xl overflow-hidden h-72 card-hover">
+        <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=700&q=75" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Personal training">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+        <div class="absolute bottom-0 p-6">
+          <i data-lucide="user-check" class="w-6 h-6 text-gold mb-2"></i>
+          <h3 class="font-bold text-lg">Personal Training (1-on-1)</h3>
+        </div>
+      </div>
+
+      <div class="reveal group relative rounded-2xl overflow-hidden h-72 card-hover">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=700&q=75" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Nutrition planning">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+        <div class="absolute bottom-0 p-6">
+          <i data-lucide="salad" class="w-6 h-6 text-gold mb-2"></i>
+          <h3 class="font-bold text-lg">Nutrition & Diet Planning</h3>
+        </div>
+      </div>
+
+      <div class="reveal group relative rounded-2xl overflow-hidden h-72 card-hover">
+        <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=700&q=75" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Steam bath and sauna">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+        <div class="absolute bottom-0 p-6">
+          <i data-lucide="waves" class="w-6 h-6 text-gold mb-2"></i>
+          <h3 class="font-bold text-lg">Steam Bath & Sauna</h3>
+        </div>
+      </div>
+
+      <div class="reveal group relative rounded-2xl overflow-hidden h-72 card-hover sm:col-span-2 lg:col-span-1">
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=700&q=75" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Zumba and aerobics class">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+        <div class="absolute bottom-0 p-6">
+          <i data-lucide="music" class="w-6 h-6 text-gold mb-2"></i>
+          <h3 class="font-bold text-lg">Zumba & Aerobics Class</h3>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="flame-divider"></div>
+
+<!-- ================= PRICING ================= -->
+<section id="pricing" class="py-24 md:py-32 bg-[#09090B]">
+  <div class="max-w-6xl mx-auto px-5 md:px-6">
+    <div class="max-w-2xl mb-16 mx-auto text-center reveal">
+      <span class="font-mono text-xs uppercase tracking-[0.25em] text-gold">Membership Plans</span>
+      <h2 class="font-display text-5xl md:text-6xl mt-3">Pick Your Plan</h2>
+      <p class="text-zinc-400 mt-4">Every plan includes full gym access. Longer commitments unlock more perks.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- 1 Month -->
+      <div class="reveal price-card rounded-2xl border border-white/10 bg-charcoal p-7 flex flex-col">
+        <p class="font-mono text-xs uppercase tracking-widest text-zinc-500 mb-2">1 Month</p>
+        <p class="font-display text-4xl mb-1">NPR 1,200</p>
+        <p class="text-zinc-500 text-xs mb-6">billed once</p>
+        <ul class="space-y-3 text-sm text-zinc-300 flex-1 mb-7">
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold mt-0.5 shrink-0"></i>Standard gym access</li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold mt-0.5 shrink-0"></i>Locker access</li>
+        </ul>
+        <a href="https://wa.me/9779814684061?text=Hi%2C%20I%27d%20like%20to%20join%20the%201%20Month%20plan." target="_blank" rel="noopener noreferrer" class="text-center border border-zinc-600 hover:border-gold rounded-full py-3 text-sm font-bold transition">Choose Plan</a>
+      </div>
+
+      <!-- 3 Months -->
+      <div class="reveal price-card rounded-2xl border border-white/10 bg-charcoal p-7 flex flex-col">
+        <p class="font-mono text-xs uppercase tracking-widest text-zinc-500 mb-2">3 Months</p>
+        <p class="font-display text-4xl mb-1">NPR 3,000</p>
+        <p class="text-zinc-500 text-xs mb-6">billed once</p>
+        <ul class="space-y-3 text-sm text-zinc-300 flex-1 mb-7">
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold mt-0.5 shrink-0"></i>Full gym access</li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold mt-0.5 shrink-0"></i>Free basic diet chart</li>
+        </ul>
+        <a href="https://wa.me/9779814684061?text=Hi%2C%20I%27d%20like%20to%20join%20the%203%20Months%20plan." target="_blank" rel="noopener noreferrer" class="text-center border border-zinc-600 hover:border-gold rounded-full py-3 text-sm font-bold transition">Choose Plan</a>
+      </div>
+
+      <!-- 6 Months - POPULAR -->
+      <div class="reveal price-card relative rounded-2xl border-2 border-gold bg-charcoal p-7 flex flex-col glow-gold">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Popular</span>
+        <p class="font-mono text-xs uppercase tracking-widest text-gold mb-2">6 Months</p>
+        <p class="font-display text-4xl mb-1">NPR 5,500</p>
+        <p class="text-zinc-500 text-xs mb-6">billed once</p>
+        <ul class="space-y-3 text-sm text-zinc-300 flex-1 mb-7">
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold mt-0.5 shrink-0"></i>Full gym access</li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold mt-0.5 shrink-0"></i>Free diet plan</li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold mt-0.5 shrink-0"></i>2 free steam bath sessions</li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold mt-0.5 shrink-0"></i>Personal locker</li>
+        </ul>
+        <a href="https://wa.me/9779814684061?text=Hi%2C%20I%27d%20like%20to%20join%20the%206%20Months%20plan." target="_blank" rel="noopener noreferrer" class="text-center bg-gold text-black rounded-full py-3 text-sm font-bold btn-glow transition">Choose Plan</a>
+      </div>
+
+      <!-- 12 Months - BEST VALUE -->
+      <div class="reveal price-card relative rounded-2xl border border-white/10 bg-gradient-to-b from-charcoal to-[#1f1a08] p-7 flex flex-col">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Best Value</span>
+        <p class="font-mono text-xs uppercase tracking-widest text-zinc-500 mb-2">12 Months</p>
+        <p class="font-display text-4xl mb-1">NPR 10,000</p>
+        <p class="text-zinc-500 text-xs mb-6">billed once</p>
+        <ul class="space-y-3 text-sm text-zinc-300 flex-1 mb-7">
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold mt-0.5 shrink-0"></i>All access</li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold mt-0.5 shrink-0"></i>Customized diet plan</li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold mt-0.5 shrink-0"></i>Unlimited steam bath</li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold mt-0.5 shrink-0"></i>Free gym shaker</li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold mt-0.5 shrink-0"></i>VIP guest pass</li>
+        </ul>
+        <a href="https://wa.me/9779814684061?text=Hi%2C%20I%27d%20like%20to%20join%20the%2012%20Months%20plan." target="_blank" rel="noopener noreferrer" class="text-center border border-zinc-600 hover:border-gold rounded-full py-3 text-sm font-bold transition">Choose Plan</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRAINERS ================= -->
+<section id="trainers" class="py-24 md:py-32 bg-[#0d0d10] scale-texture-dense">
+  <div class="max-w-6xl mx-auto px-5 md:px-6">
+    <div class="max-w-2xl mb-16 reveal">
+      <span class="font-mono text-xs uppercase tracking-[0.25em] text-gold">Meet The Coaches</span>
+      <h2 class="font-display text-5xl md:text-6xl mt-3 ember-underline pb-3">Trained By Experts</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="reveal glass rounded-2xl overflow-hidden card-hover">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=75" class="w-full h-80 object-cover" alt="Head bodybuilding coach">
+        <div class="p-6">
+          <h3 class="font-bold text-xl">Head Bodybuilding Coach</h3>
+          <p class="text-gold font-mono text-xs uppercase tracking-widest mt-1">8+ Years Experience</p>
+          <p class="text-zinc-400 text-sm mt-3">Specializes in hypertrophy programming and clean lifting form for serious mass gain.</p>
+        </div>
+      </div>
+      <div class="reveal glass rounded-2xl overflow-hidden card-hover">
+        <img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fit=crop&w=600&q=75" class="w-full h-80 object-cover" alt="Fat loss and cardio specialist">
+        <div class="p-6">
+          <h3 class="font-bold text-xl">Fat Loss & Cardio Specialist</h3>
+          <p class="text-gold font-mono text-xs uppercase tracking-widest mt-1">5+ Years Experience</p>
+          <p class="text-zinc-400 text-sm mt-3">Builds sustainable cardio and conditioning plans that pair with real diet coaching.</p>
+        </div>
+      </div>
+      <div class="reveal glass rounded-2xl overflow-hidden card-hover sm:col-span-2 lg:col-span-1">
+        <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?auto=format&fit=crop&w=600&q=75" class="w-full h-80 object-cover" alt="Functional and CrossFit coach">
+        <div class="p-6">
+          <h3 class="font-bold text-xl">Functional & CrossFit Coach</h3>
+          <p class="text-gold font-mono text-xs uppercase tracking-widest mt-1">6+ Years Experience</p>
+          <p class="text-zinc-400 text-sm mt-3">Runs high-intensity functional sessions built for mobility, power, and endurance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="flame-divider"></div>
+
+<!-- ================= TRANSFORMATIONS & REVIEWS ================= -->
+<section id="transformations" class="py-24 md:py-32 bg-[#09090B]">
+  <div class="max-w-6xl mx-auto px-5 md:px-6">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-16 reveal">
+      <div class="max-w-xl">
+        <span class="font-mono text-xs uppercase tracking-[0.25em] text-gold">Real Results</span>
+        <h2 class="font-display text-5xl md:text-6xl mt-3 ember-underline pb-3">Transformations</h2>
+      </div>
+      <div class="glass rounded-2xl px-6 py-4 flex items-center gap-3">
+        <div class="flex text-gold">
+          <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
+        </div>
+        <div>
+          <p class="font-bold">4.9 out of 5</p>
+          <p class="text-zinc-500 font-mono text-xs">150+ Google Reviews</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-16">
+      <div class="reveal relative rounded-2xl overflow-hidden h-96 card-hover">
+        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=600&q=75" class="w-full h-full object-cover" alt="Member transformation at Dragon Fitness">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+        <div class="absolute bottom-5 left-5 right-5">
+          <p class="font-bold">−12 kg in 6 months</p>
+          <p class="text-zinc-400 text-xs font-mono">Fat loss program</p>
+        </div>
+      </div>
+      <div class="reveal relative rounded-2xl overflow-hidden h-96 card-hover">
+        <img src="https://images.unsplash.com/photo-1550345332-09e3ac987658?auto=format&fit=crop&w=600&q=75" class="w-full h-full object-cover" alt="Member transformation at Dragon Fitness">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+        <div class="absolute bottom-5 left-5 right-5">
+          <p class="font-bold">+8 kg lean muscle</p>
+          <p class="text-zinc-400 text-xs font-mono">Mass gain program</p>
+        </div>
+      </div>
+      <div class="reveal relative rounded-2xl overflow-hidden h-96 card-hover">
+        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=600&q=75" class="w-full h-full object-cover" alt="Member transformation at Dragon Fitness">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+        <div class="absolute bottom-5 left-5 right-5">
+          <p class="font-bold">Ready for competition</p>
+          <p class="text-zinc-400 text-xs font-mono">12-month member</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="reveal glass rounded-2xl p-7">
+        <div class="flex text-gold mb-4"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+        <p class="text-zinc-300 text-sm leading-relaxed mb-5">"The trainers actually correct your form instead of just watching the clock. I've seen more progress here in three months than a year anywhere else."</p>
+        <p class="font-bold text-sm">Bipin S.</p>
+        <p class="text-zinc-500 font-mono text-xs">6-Month Member</p>
+      </div>
+      <div class="reveal glass rounded-2xl p-7">
+        <div class="flex text-gold mb-4"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+        <p class="text-zinc-300 text-sm leading-relaxed mb-5">"Clean, air-conditioned, and never overcrowded. The diet plan alone was worth joining for — I finally understand what I'm eating and why."</p>
+        <p class="font-bold text-sm">Anita K.</p>
+        <p class="text-zinc-500 font-mono text-xs">Yearly Member</p>
+      </div>
+      <div class="reveal glass rounded-2xl p-7">
+        <div class="flex text-gold mb-4"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+        <p class="text-zinc-300 text-sm leading-relaxed mb-5">"Best equipment in Janakpur, hands down. The CrossFit sessions push me harder than I'd ever push myself alone."</p>
+        <p class="font-bold text-sm">Rajesh Y.</p>
+        <p class="text-zinc-500 font-mono text-xs">3-Month Member</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="flame-divider"></div>
+
+<!-- ================= LOCATION & CONTACT ================= -->
+<section id="location" class="py-24 md:py-32 bg-[#0d0d10] scale-texture-dense">
+  <div class="max-w-6xl mx-auto px-5 md:px-6">
+    <div class="max-w-2xl mb-16 reveal">
+      <span class="font-mono text-xs uppercase tracking-[0.25em] text-gold">Get In Touch</span>
+      <h2 class="font-display text-5xl md:text-6xl mt-3 ember-underline pb-3">Visit The Floor</h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-8">
+
+      <div class="reveal space-y-6">
+        <div class="glass rounded-2xl p-6 flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-gold/15 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="min-w-0 flex-1">
+            <p class="font-bold text-sm uppercase tracking-widest text-zinc-500 font-mono mb-1">Address</p>
+            <p class="text-zinc-200">Bhanuchowk, Janakpur 45600</p>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-6 flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-gold/15 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+          </div>
+          <div class="min-w-0 flex-1">
+            <p class="font-bold text-sm uppercase tracking-widest text-zinc-500 font-mono mb-1">Phone / WhatsApp</p>
+            <a href="tel:+977-9814684061" class="text-zinc-200 hover:text-gold transition">+977-9814684061</a>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-6 flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-gold/15 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </div>
+          <div class="min-w-0 flex-1">
+            <p class="font-bold text-sm uppercase tracking-widest text-zinc-500 font-mono mb-1">Email</p>
+            <a href="mailto:fitandflex354@gmail.com" class="text-zinc-200 hover:text-gold transition break-all">fitandflex354@gmail.com</a>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-6 flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-gold/15 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="min-w-0 flex-1">
+            <p class="font-bold text-sm uppercase tracking-widest text-zinc-500 font-mono mb-1">Opening Hours</p>
+            <p class="text-zinc-200">Sunday – Friday: 5:00 AM – 9:30 PM</p>
+            <p class="text-zinc-500 text-sm">Saturday: Closed</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <a href="https://www.facebook.com/p/FitFlex-61563765583069/" target="_blank" rel="noopener noreferrer" class="glass rounded-2xl p-6 flex items-center gap-4 hover:border-gold/40 transition">
+            <div class="w-11 h-11 rounded-xl bg-gold/15 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg>
+            </div>
+            <div>
+              <p class="font-bold text-sm uppercase tracking-widest text-zinc-500 font-mono mb-1">Facebook</p>
+              <p class="text-zinc-200">fit&flex</p>
+            </div>
+          </a>
+          <a href="https://www.tiktok.com/@fitandflexgym" target="_blank" rel="noopener noreferrer" class="glass rounded-2xl p-6 flex items-center gap-4 hover:border-gold/40 transition">
+            <div class="w-11 h-11 rounded-xl bg-gold/15 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-1-.89-1.6-2.14-1.6-3.52h-3.02v13.86a2.7 2.7 0 1 1-1.91-2.58V10.5a5.72 5.72 0 1 0 4.93 5.66V9.29a6.87 6.87 0 0 0 4 1.29V7.55c-.7 0-1.75-.28-2.4-.73-.5-.35-1-.62-1-1z"/></svg>
+            </div>
+            <div>
+              <p class="font-bold text-sm uppercase tracking-widest text-zinc-500 font-mono mb-1">TikTok</p>
+              <p class="text-zinc-200">@fitandflexgym</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal flex flex-col gap-6">
+        <div class="glass rounded-2xl overflow-hidden h-64 lg:h-72 relative">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3489.135064660971!2d85.9328711!3d26.732503200000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ec3f0050b3aae1%3A0xedeb98f727843763!2sFit%20and%20flex%20gym!5e1!3m2!1sen!2snp!4v1786770204541!5m2!1sen!2snp"
+            width="100%" height="100%" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Dragon Fitness Center location map">
+          </iframe>
+          <a href="https://maps.app.goo.gl/XbMavpC5FKzLhLkDA" target="_blank" rel="noopener noreferrer"
+             class="absolute bottom-3 right-3 inline-flex items-center gap-2 bg-black/80 backdrop-blur text-white text-xs font-bold px-4 py-2.5 rounded-full border border-white/10 hover:border-gold hover:text-gold transition">
+            <i data-lucide="navigation" class="w-3.5 h-3.5"></i> Open in Google Maps
+          </a>
+        </div>
+
+        <form id="queryForm" class="glass rounded-2xl p-7 flex flex-col gap-4">
+          <h3 class="font-bold text-lg mb-1">Quick Query</h3>
+          <p class="text-zinc-500 text-sm -mt-3 mb-2">Tell us your goal — we'll reply on WhatsApp.</p>
+          <input id="qName" type="text" placeholder="Your name" required
+                 class="bg-white border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-900 focus:border-gold outline-none transition placeholder:text-gray-400">
+          <input id="qPhone" type="tel" placeholder="Phone number" required
+                 class="bg-white border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-900 focus:border-gold outline-none transition placeholder:text-gray-400">
+          <select id="qGoal" required
+                  class="bg-white border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-900 focus:border-gold outline-none transition">
+            <option value="" disabled selected>Select your goal</option>
+            <option>Muscle Mass Gain</option>
+            <option>Fat Loss</option>
+            <option>General Fitness</option>
+            <option>CrossFit / Functional Training</option>
+            <option>Personal Training</option>
+          </select>
+          <button type="submit"
+                  class="bg-gold text-black font-bold rounded-full py-3.5 text-sm uppercase tracking-wide btn-glow transition-all duration-300 flex items-center justify-center gap-2">
+            Send via WhatsApp <i data-lucide="send" class="w-4 h-4"></i>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BAND ================= -->
+<section class="py-16 bg-gradient-to-r from-gold-deep via-gold to-ember relative overflow-hidden" style="background:linear-gradient(100deg,#EAB308,#FACC15,#F97316);">
+  <div class="max-w-4xl mx-auto px-5 md:px-6 text-center reveal">
+    <h2 class="font-display text-4xl md:text-5xl text-black mb-4">Your First 3 Days Are On Us</h2>
+    <p class="text-black/70 mb-8 max-w-xl mx-auto">Walk in, train with our coaches, feel the difference — no commitment required.</p>
+    <a href="https://wa.me/9779814684061?text=Hi%20fitand%20Flexgym%2C%20I%27d%20like%20to%20claim%20my%20free%203-day%20pass!" target="_blank" rel="noopener noreferrer"
+       class="inline-flex items-center gap-2 bg-black text-white font-bold px-8 py-4 rounded-full text-sm uppercase tracking-wide hover:bg-zinc-900 transition">
+      <i data-lucide="flame" class="w-4 h-4"></i> Claim Your Free Pass
+    </a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-[#09090B] pt-16 pb-28 md:pb-10 border-t border-white/5">
+  <div class="max-w-6xl mx-auto px-5 md:px-6">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2.5 mb-4">
+          <img src="fit and flex logo.jpg" alt="Fit and flex logo" class="w-9 h-9 rounded-full object-cover shrink-0">
+          <span class="font-display text-xl">FIT AND<span class="text-gold"> FLEX GYM</span></span>
+        </div>
+        <p class="text-zinc-500 text-sm max-w-sm leading-relaxed">A new art of fitness in Janakpur — specialized coaching, modern equipment, and a floor built for real transformation.</p>
+        <div class="flex flex-wrap gap-3 mt-6">
+          <a href="https://www.facebook.com/p/FitFlex-61563765583069/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-gold hover:text-gold transition">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@fitandflexgym" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-gold hover:text-gold transition">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-1-.89-1.6-2.14-1.6-3.52h-3.02v13.86a2.7 2.7 0 1 1-1.91-2.58V10.5a5.72 5.72 0 1 0 4.93 5.66V9.29a6.87 6.87 0 0 0 4 1.29V7.55c-.7 0-1.75-.28-2.4-.73-.5-.35-1-.62-1-1z"/></svg>
+          </a>
+          <a href="https://wa.me/977981-4684061" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-gold hover:text-gold transition">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+          </a>
+          <a href="mailto:fitandflex354@gmail.com" aria-label="Email" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-gold hover:text-gold transition">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest text-zinc-500 mb-4">Navigate</p>
+        <ul class="space-y-3 text-sm text-zinc-400">
+          <li><a href="#about" class="hover:text-gold transition">About Us</a></li>
+          <li><a href="#services" class="hover:text-gold transition">Services</a></li>
+          <li><a href="#pricing" class="hover:text-gold transition">Pricing</a></li>
+          <li><a href="#trainers" class="hover:text-gold transition">Trainers</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest text-zinc-500 mb-4">Opening Hours</p>
+        <p class="text-sm text-zinc-400 mb-1">Sun – Fri: 5:00 AM – 9:00 PM</p>
+        <p class="text-sm text-zinc-400 mb-4">Saturday: Closed</p>
+        <p class="font-mono text-xs uppercase tracking-widest text-zinc-500 mb-2">Location</p>
+        <p class="text-sm text-zinc-400"> Bhanuchowk, Janakpur</p>
+      </div>
+    </div>
+
+    <div class="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-zinc-600 text-xs">© 2026 Fit and flex gym. All rights reserved.</p>
+      <p class="text-zinc-600 text-xs font-mono">Janakpur, Nepal</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= FLOATING WHATSAPP ================= -->
+<a href="https://wa.me/9779814684061?text=Hi%20Fit%20and%20Flex%20Gym%2C%20I%20have%20a%20question!" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"
+   class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300">
+  <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M20.52 3.449C12.831-3.984.106 1.407.101 11.892c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a11.882 11.882 0 0 0 5.683 1.448h.005c9.548 0 15.795-9.965 11.893-17.53a11.99 11.99 0 0 0-3.396-2.817zM12.023 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.981.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.259c.004-5.448 4.436-9.879 9.888-9.879 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.448-4.435 9.879-9.885 9.879z"/></svg>
+</a>
+
+<script>
+  // Safe icon init — never let a CDN hiccup break the rest of the page
+  function initIcons() {
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      try { window.lucide.createIcons(); } catch (err) { console.warn('Lucide render skipped:', err); }
+    }
+  }
+
+  // Core UI logic — runs independently of whether icons loaded
+  function initPage() {
+    // Sticky nav shrink
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) navbar.classList.add('shadow-lg');
+      else navbar.classList.remove('shadow-lg');
+    });
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      menuBtn.innerHTML = isOpen ? '<i data-lucide="menu" class="w-7 h-7"></i>' : '<i data-lucide="x" class="w-7 h-7"></i>';
+      initIcons();
+    });
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuBtn.innerHTML = '<i data-lucide="menu" class="w-7 h-7"></i>';
+      initIcons();
+    }));
+
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Quick query form -> WhatsApp
+    const queryForm = document.getElementById('queryForm');
+    if (queryForm) {
+      queryForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('qName').value.trim();
+        const phone = document.getElementById('qPhone').value.trim();
+        const goal = document.getElementById('qGoal').value;
+        const text = encodeURIComponent(`Hi Dragon Fitness, my name is ${name} (${phone}). I'm interested in: ${goal}.`);
+        window.open(`https://wa.me/9779814684061?text=${text}`, '_blank');
+      });
+    }
+
+    // Intercept in-page anchor links (#pricing, #about, etc.) and smooth-scroll
+    // instead of letting the host page treat them as external navigation.
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const hash = link.getAttribute('href');
+        if (!hash || hash === '#') return;
+        const target = document.querySelector(hash);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Keep the URL in sync without triggering a jump/reload
+        if (history.pushState) history.pushState(null, '', hash);
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initPage();
+    initIcons();
+  });
+
+  // In case the Lucide script (deferred) finishes after DOMContentLoaded already fired
+  window.addEventListener('load', initIcons);
+</script>
+
+</body>
+</html>
